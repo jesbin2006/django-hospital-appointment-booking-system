@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Department Doctors
+{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Doctors</h2>
+        <p class="text-muted">Available doctors in this department</p>
+    </div>
+
+    {% for i in doctor %}
+
+    <div class="card shadow-sm border-0 rounded-4 mb-4 overflow-hidden">
+        <div class="row g-0 align-items-center">
+
+            <!-- Doctor Image -->
+            <div class="col-md-3 text-center p-3">
+               <a href="{% url 'see' i.id %}" ><img src="{{ i.image.url }}" 
+                     class="img-fluid rounded-4 doctor-img-box"
+                     alt="{{ i.name }}"></a>
+            </div>
+
+            <!-- Doctor Details -->
+            <div class="col-md-9 p-4">
+
+                <h3 class="fw-bold mb-2">{{ i.name }}</h3>
+
+                <p class="text-primary fw-semibold mb-1">
+                    {{ i.specialization }}
+                </p>
+
+                <p class="text-muted mb-4">
+                    {{ i.department }}
+                </p>
+
+                <!-- 7 Days Box -->
+                <div class="row g-3">
+
+                    <div class="col">
+                        <div class="day-box">Mon</div>
+                    </div>
+
+                    <div class="col">
+                        <div class="day-box">Tue</div>
+                    </div>
+
+                    <div class="col">
+                        <div class="day-box">Wed</div>
+                    </div>
+
+                    <div class="col">
+                        <div class="day-box">Thu</div>
+                    </div>
+
+                    <div class="col">
+                        <div class="day-box">Fri</div>
+                    </div>
+
+                    <div class="col">
+                        <div class="day-box">Sat</div>
+                    </div>
+
+                    <div class="col">
+                        <div class="day-box">Sun</div>
+                    </div>
+
+                </div>
+
+                <button class="btn btn-primary mt-4 px-4 rounded-pill">
+                    Book Appointment
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+
+</section>
+
+
+{% endblock %}

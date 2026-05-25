@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+login
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+
+        <div class="row justify-content-center align-items-center vh-100">
+
+            <div class="col-md-5">
+
+                <div class="card shadow p-4">
+
+                    <h2 class="text-center mb-4">
+                        Login
+                    </h2>
+                     {% if error %}
+
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+
+                     {% endif %}
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Username
+                            </label>
+
+                            <input 
+                                type="text"
+                                name="username"
+                                class="form-control"
+                                placeholder="Enter username"
+                            >
+                        </div>
+                        
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Password
+                            </label>
+
+                            <input 
+                                type="password"
+                                name="password"
+                                class="form-control"
+                                placeholder="Enter password"
+                            >
+                        </div>
+                   
+                        <button class="btn btn-primary w-100">
+                            Login
+                        </button>
+                
+                   {% load socialaccount %}
+
+                  <a href="{% provider_login_url 'google' %}" 
+                   class="btn btn-light border w-100 mt-3 d-flex align-items-center justify-content-center gap-2">
+
+                  <img src="https://developers.google.com/identity/images/g-logo.png" width="20">
+
+                    Continue with Google
+                  </a>
+                        <div class="text-center mt-3">
+
+                               <a href="{% url 'password_reset' %}">
+                                   Forgot Password?
+                                </a>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+</div>
+</div>
+{% endblock %}

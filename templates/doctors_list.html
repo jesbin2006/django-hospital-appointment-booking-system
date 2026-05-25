@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Doctor Information
+{% endblock %}
+
+{% block content %}
+
+
+<section class="doctor-view">
+
+    <div class="doctor-card">
+
+        <div class="doctor-header">
+            {% if doc.image %}
+                <img src="{{ doc.image.url }}" class="doctor-img">
+            {% else %}
+                <img src="{% static 'img/default.png' %}" class="doctor-img">
+            {% endif %}
+
+            <div>
+                <h2 class="doctor-name">{{ doc.name }}</h2>
+                <p class="doctor-spec">{{ doc.specialization }}</p>
+            </div>
+        </div>
+
+        <div class="doctor-body">
+
+            <div class="doctor-row">
+                <span>Department</span>
+                <b>{{ doc.department }}</b>
+            </div>
+
+            <div class="doctor-row">
+                <span>Experience</span>
+                <b>{{ doc.experience }} Years</b>
+            </div>
+
+            <div class="doctor-row full">
+                <span>History</span>
+                <p>{{ doc.history }}</p>
+            </div>
+
+        </div>
+
+        <a href="{% url 'doctors' %}" class="doctor-btn">
+            ← Back to Doctors
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
